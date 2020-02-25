@@ -7,7 +7,11 @@ resources:
   - role_binding.yaml
   - operator.yaml
 commonLabels:
-  kustomize.component: hello-world
+  app.kubernetes.io/name: apirator
+  app.kubernetes.io/version: "0.0.1"
+  app.kubernetes.io/component: operator
+  app.kubernetes.io/part-of: apirator
+  app.kubernetes.io/managed-by: kustomize
 images:
   - name: hello-world
     newName: adrian555/hello-world
@@ -16,6 +20,7 @@ images:
     newName: adrian555/hello-op
     newTag: v0.0.1
 configMapGenerator:
-  - name: install-config
+  - name: apirator-config
     literals:
-      - DEPLOY_ENV="base"
+      - OPERATOR_NAME="apirator"
+      - WATCH_NAMESPACE="oas"

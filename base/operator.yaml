@@ -25,11 +25,15 @@ spec:
           env:
             - name: WATCH_NAMESPACE
               valueFrom:
-                fieldRef:
-                  fieldPath: metadata.namespace
+                configMapKeyRef:
+                  name: apirator-config
+                  key: WATCH_NAMESPACE
             - name: POD_NAME
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
             - name: OPERATOR_NAME
-              value: "apirator"
+              valueFrom:
+                configMapKeyRef:
+                  name: apirator-config
+                  key: OPERATOR_NAME
