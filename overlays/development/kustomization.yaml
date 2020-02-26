@@ -4,3 +4,8 @@ bases:
   - ../../base
 patchesStrategicMerge:
   - config-map.yaml
+
+images:
+  - name: apirator
+    newName: apirator/apirator
+    newTag: latest
