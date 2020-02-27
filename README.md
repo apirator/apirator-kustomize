@@ -18,6 +18,35 @@ kustomize edit set image apirator/apirator=apirator/apirator:$TAG_VERSION
 
 ## Generate kubernetes manifests
 
+### Development
 
+```bash
+kustomize build <folder>/overlays/development
+```
 
+## Generate manifests and install
 
+#### Production
+
+It will generate the production manifests and apply on the desired namespace. 
+
+```bash
+kustomize build <folder>/overlays/production | kubectl -n <namespace>  apply -f  - 
+```
+
+#### Development
+
+It will generate the development manifests and apply on the desired namespace
+
+```bash
+kustomize build <folder>/overlays/development | kubectl -n <namespace>  apply -f  - 
+```
+
+After run the kustomize stuff you can check the installation running.
+
+### Check installation
+
+```bash
+kubectl get deployment -l app=apirator -n <namespace>
+```
+ 
