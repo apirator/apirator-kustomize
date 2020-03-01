@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: apirator-config
+data:
+  OPERATOR_NAME: "apirator"
+  WATCH_NAMESPACE: ""

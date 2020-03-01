@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- crd.yaml
+- service_account.yaml
+- role.yaml
+- role_binding.yaml
+- operator.yaml
+commonLabels:
+  app.kubernetes.io/component: operator
+  app.kubernetes.io/managed-by: kustomize
+  app.kubernetes.io/name: apirator
+  app.kubernetes.io/part-of: apirator
+  app.kubernetes.io/version: 0.0.1
+
+configMapGenerator:
+- literals:
+  - OPERATOR_NAME="apirator"
+  - WATCH_NAMESPACE="oas"
+  name: apirator-config
